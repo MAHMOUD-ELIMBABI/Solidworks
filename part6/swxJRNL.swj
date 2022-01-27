@@ -1,0 +1,49 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 12/25/21 by MahmoudElImbabi
+' *****************************************************************************
+Dim swApp As Object
+
+Dim Part As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long, longwarnings As Long
+
+Sub main()
+
+Set swApp = Application.SldWorks
+
+swApp.ActivateDoc2 "Part6.SLDPRT", False, longstatus
+Set Part = swApp.ActiveDoc
+Set Part = swApp.ActiveDoc
+Dim myModelView As Object
+Set myModelView = Part.ActiveView
+myModelView.FrameLeft = 0
+myModelView.FrameTop = 0
+Set myModelView = Part.ActiveView
+myModelView.FrameState = swWindowState_e.swWindowMaximized
+Set myModelView = Part.ActiveView
+myModelView.FrameState = swWindowState_e.swWindowMaximized
+
+' Named View
+Part.ShowNamedView2 "*Top", 5
+Part.ViewZoomtofit2
+boolstatus = Part.Extension.SelectByRay(-0.02597367181661501545, 0.02539999999999054126, 0.01186451675573760821, 0, -1, 0, 0.0004361011564271164765, 2, False, 0, 0)
+Part.FeatEdit
+Part.ClearSelection2 True
+Part.SketchManager.InsertSketch True
+boolstatus = Part.Extension.SelectByRay(0.02161009495142368619, 0.01931124374357295892, 0.009198142979323864488, 0, -1, 0, 0.0007535827983060572549, 2, False, 0, 0)
+Part.ClearSelection2 True
+boolstatus = Part.Extension.SketchBoxSelect("0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000")
+boolstatus = Part.Extension.SelectByID2("Plane1", "PLANE", -0.02848099693597894166, 0.01269999999999946692, -0.05042355488665530017, False, 0, Nothing, 0)
+Part.ClearSelection2 True
+boolstatus = Part.Extension.SketchBoxSelect("0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000")
+boolstatus = Part.Extension.SelectByID2("Plane1", "PLANE", -0.03335712092501813553, 0.01269999999999959009, -0.03867652891306087859, False, 0, Nothing, 0)
+Part.ClearSelection2 True
+
+' Named View
+Part.ShowNamedView2 "*Isometric", 7
+Part.ViewZoomtofit2
+' MSGBOX
+' Save changes to Part6.SLDPRT?
+
+swApp.ExitApp
+End Sub
